@@ -10,4 +10,4 @@ WORKDIR /app/src
 
 EXPOSE 5000
 
-CMD ["gunicorn", "-b", ":5000", "wsgi"]
+CMD ["gunicorn", "-b", ":5000", "-t", "600", "-w", "8", "wsgi"]
