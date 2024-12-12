@@ -81,7 +81,7 @@ if __name__ == "__main__":
     ELECTION_DATA_PATH = os.path.join(RAW_DIRECTORY, "analytics.csv")
     NYC_SHAPEFILE_PATH = os.path.join(RAW_DIRECTORY, "nyed_24d", "nyed.shp")
 
-    FLASK_TEMPLATE_DIRECTORY = os.path.join("../templates")
+    FLASK_TEMPLATE_DIRECTORY = os.path.join("../static")
 
     ELECTION_DATA = pd.read_csv(ELECTION_DATA_PATH)
     NYC_SHAPEFILE = gpd.read_file(NYC_SHAPEFILE_PATH)

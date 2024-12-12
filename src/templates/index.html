@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <!-- Favicon -->
-        <link rel="icon" type="icon/png" href="{{ url_for('static', filename='nywfp.png') }}">
+        <link rel="icon" type="icon/png" href="{{ url_for('static', filename='liberty.png') }}">
 
         <!--- Bootstrap CSS --->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
@@ -25,7 +25,7 @@
             <p>This map represents the Working Families Party share of Harris votes per NY Election District</p>
         </div>
         <div>
-            <iframe src="{{ url_for('wfp_nyc') }}" class="wfp-map" loading="lazy"></iframe>
+            <iframe src="{{ url_for('static', filename='wfp_nyc.html') }}" class="wfp-map" loading="lazy"></iframe>
         </div>
     </body>
 </html>
