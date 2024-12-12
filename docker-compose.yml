@@ -1,0 +1,9 @@
+services:
+  wfp-nyc:
+    build:
+      context: .
+      dockerfile: ./deploy/Dockerfile
+    volumes:
+      - .:/app
+    ports:
+      - 5000:5000
