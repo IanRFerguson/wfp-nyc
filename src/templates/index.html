@@ -22,15 +22,14 @@
     <body>
         <div class="container">
             <h1><b>WFP 🤝 NYC</b></h1>
-            <p>This map represents the Working Families Party share of Harris votes per NY Election District</p>
+            <p>This map represents the <a href="https://workingfamilies.org" target="_blank"><b>Working Families Party</b></a> share of Harris votes per NY Election District</p>
         </div>
-        <div>
-            <div id="spinner">
-                <div>
-                    <img src="http://www.ajaxload.info/images/exemples/25.gif" />    
-                </div>
-            </div>
-            <iframe src="{{ url_for('static', filename='wfp_nyc.html') }}" class="wfp-map" loading="lazy"></iframe>
+        <div class="map-container">
+            <iframe 
+                src="{{ url_for('static', filename='wfp_nyc.html') }}" 
+                class="wfp-map" 
+                frameborder="0"
+            ></iframe>
         </div>
     </body>
 </html>
