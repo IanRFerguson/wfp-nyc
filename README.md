@@ -7,6 +7,8 @@ All data represented in this project is available publicly at the links below:
 * [Election Data](https://vote.nyc/page/election-results-summary)
 * [District Shapefiles](https://www.nyc.gov/site/planning/data-maps/open-data/districts-download-metadata.page)
 
+View the app [here](https://wfp-nyc-817201868807.us-central1.run.app)
+
 ## Analysis
 WFP vote share was calculated as follows:
 * Election data records were filtered down to votes for Kamala Harris
