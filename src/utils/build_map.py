@@ -54,7 +54,7 @@ def main(
         control=False,
         tooltip=folium.features.GeoJsonTooltip(
             fields=["ElectDist", "clean_pct", "vote_totals"],
-            aliases=["Election District", "WFP Vote Share", "Total Democratic Votes"],
+            aliases=["Election District", "WFP Vote Share", "Total Harris Votes"],
             style=(
                 "background-color: white; color: #333333; font-family: arial; font-size: 12px; padding: 10px;"
             ),
