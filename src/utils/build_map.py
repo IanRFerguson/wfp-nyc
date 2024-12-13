@@ -19,7 +19,15 @@ def main(
     logger.info("Building Folium map...")
     logger.debug("Aggregating election + shapefile data...")
     _agg_data = nyc_shapefile.merge(election_data, on="ElectDist")
+
+    # Add percentage column to use for display
     _agg_data["clean_pct"] = _agg_data["wfp_pct"].apply(lambda x: f"{round(x, 2)}%")
+
+    # Simplify geometry column in geo df
+    _agg_data["geometry"] = gpd.GeoSeries.simplify(
+        _agg_data["geometry"], tolerance=1000
+    )
+
     logger.debug(_agg_data.head())
 
     nyc_map = folium.Map(location=NYC_COORDS, zoom_start=ZOOM_START)
