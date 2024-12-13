@@ -4,6 +4,7 @@ import folium
 import geopandas as gpd
 import pandas as pd
 from logger import logger
+from typing import Optional
 
 ##########
 
@@ -15,6 +16,7 @@ def main(
     data_directory: os.path,
     election_data: pd.DataFrame,
     nyc_shapefile: gpd.GeoDataFrame,
+    simplify_tolerance: Optional[float] = None,
 ):
     logger.info("Building Folium map...")
     logger.debug("Aggregating election + shapefile data...")
@@ -22,6 +24,14 @@ def main(
 
     # Add percentage column to use for display
     _agg_data["clean_pct"] = _agg_data["wfp_pct"].apply(lambda x: f"{round(x, 2)}%")
+
+    if simplify_tolerance:
+        logger.debug(
+            f"Simplifying geospatial boundaries with {simplify_tolerance}m tolerance"
+        )
+        _agg_data["geometry"] = gpd.GeoSeries.simplify(
+            _agg_data["geometry"], tolerance=float(simplify_tolerance)
+        )
 
     logger.debug(_agg_data.head())
 
@@ -96,8 +106,11 @@ if __name__ == "__main__":
     ELECTION_DATA = pd.read_csv(ELECTION_DATA_PATH)
     NYC_SHAPEFILE = gpd.read_file(NYC_SHAPEFILE_PATH)
 
+    TOLERANCE = os.environ.get("TOLERANCE")
+
     main(
         data_directory=FLASK_TEMPLATE_DIRECTORY,
         election_data=ELECTION_DATA,
         nyc_shapefile=NYC_SHAPEFILE,
+        simplify_tolerance=TOLERANCE,
     )
