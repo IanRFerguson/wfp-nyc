@@ -24,9 +24,7 @@ def main(
     _agg_data["clean_pct"] = _agg_data["wfp_pct"].apply(lambda x: f"{round(x, 2)}%")
 
     # Simplify geometry column in geo df
-    _agg_data["geometry"] = gpd.GeoSeries.simplify(
-        _agg_data["geometry"], tolerance=1000
-    )
+    _agg_data["geometry"] = gpd.GeoSeries.simplify(_agg_data["geometry"], tolerance=100)
 
     logger.debug(_agg_data.head())
 
