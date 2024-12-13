@@ -26,7 +26,7 @@ def main(
 
     # Choropleth component
     logger.debug("Adding Choropleth...")
-    _ = folium.Choropleth(
+    _choropleth = folium.Choropleth(
         geo_data=nyc_shapefile,
         data=election_data,
         columns=["ElectDist", "wfp_pct"],
@@ -37,7 +37,14 @@ def main(
         highlights=True,
         legend_name="WFP Democratic Vote %",
         bins=[0, 2, 8, 14, 20, 26, 32, 38, 44, 50],
-    ).add_to(nyc_map)
+    )
+
+    # Hacky way to hide the Choropleth legend
+    for key in _choropleth._children:
+        if key.startswith("color_map"):
+            del _choropleth._children[key]
+
+    _choropleth.add_to(nyc_map)
 
     # Tooltip component
     logger.debug("Adding tooltip...")

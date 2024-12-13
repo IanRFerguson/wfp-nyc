@@ -14,6 +14,9 @@
         <!-- Custom CSS-->
         <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
 
+        <!-- Custom JS -->
+        <script src="{{ url_for('static', filename='load.js') }}"></script>
+
         <title>WFP 🤝 NYC</title>
     </head>
     <body>
@@ -22,11 +25,21 @@
             <p>This map represents the <a href="https://workingfamilies.org" target="_blank"><b>Working Families Party</b></a> share of Harris votes per NY Election District</p>
         </div>
         <div class="map-container">
+            <p class="loadingText" id="loadingText">Map Loading</p>
+            <iframe 
+                src="https://giphy.com/embed/3oEjI6SIIHBdRxXI40"
+                id="loadingElement" 
+                class="loadingElement" 
+                frameBorder="0" 
+                allowFullScreen></iframe>
             <iframe 
                 src="{{ url_for('static', filename='wfp_nyc.html') }}" 
-                class="wfp-map" 
-                frameborder="0"
-            ></iframe>
+                id="wfp-map"
+                class="wfp-map"
+                type="text/html"
+                allowfullscreen
+                onload="loadMap()"
+            >WFP Map</iframe>
         </div>
     </body>
 </html>
